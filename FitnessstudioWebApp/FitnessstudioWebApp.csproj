@@ -129,8 +129,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KatalogController.cs" />
     <Compile Include="Controllers\LeistungsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MitgliedController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -189,6 +191,13 @@
     <Content Include="Views\Base\Details.cshtml" />
     <Content Include="Views\Base\Edit.cshtml" />
     <Content Include="Views\Base\Index.cshtml" />
+    <Content Include="Views\Katalog\Details.cshtml" />
+    <Content Include="Views\Katalog\Index.cshtml" />
+    <Content Include="Views\Katalog\Add.cshtml" />
+    <Content Include="Views\Katalog\Deselect.cshtml" />
+    <Content Include="Views\Mitglied\Details.cshtml" />
+    <Content Include="Views\Mitglied\Edit.cshtml" />
+    <Content Include="Views\Mitglied\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

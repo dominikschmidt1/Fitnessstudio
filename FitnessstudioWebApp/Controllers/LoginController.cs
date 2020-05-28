@@ -32,7 +32,7 @@ namespace FitnessstudioWebApp.Controllers
                 return HttpNotFound();
             }
             setPersonId(id.Value);
-            return RedirectToAction("Details", "People");
+            return RedirectToAction("Index", "Mitglied");
         }
 
         protected override void Dispose(bool disposing)

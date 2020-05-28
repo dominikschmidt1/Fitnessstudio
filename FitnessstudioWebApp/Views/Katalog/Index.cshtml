@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FitnessstudioLib.Leistung>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bezeichnung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preis)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bezeichnung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Preis)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @if (ViewBag.HinzugefuegteIds.Contains(item.Id))
+            {
+                @Html.ActionLink("Abwählen", "Deselect", new { id = item.Id })
+            }
+            else
+            {
+                @Html.ActionLink("Hinzufügen", "Add", new { id = item.Id })
+            }
+        </td>
+    </tr>
+}
+
+</table>
