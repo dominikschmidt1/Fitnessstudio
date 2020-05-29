@@ -24,22 +24,7 @@ namespace FitnessstudioWebApp.Controllers
             return View(db.LeistungSet.ToList());
         }
 
-        // GET: Katalog/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Leistung leistung = db.LeistungSet.Find(id);
-            if (leistung == null)
-            {
-                return HttpNotFound();
-            }
-            return View(leistung);
-        }
-
-        // GET: Katalog/Add/5
+        // GET: Katalog/Hinzufügen/5
         public ActionResult Add(int? id)
         {
             if (id == null)
@@ -55,7 +40,6 @@ namespace FitnessstudioWebApp.Controllers
             {
                 return HttpNotFound();
             }
-            
             EingeloggtePerson.VerfuegtUeber.Add(leistung);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -77,11 +61,11 @@ namespace FitnessstudioWebApp.Controllers
             {
                 return HttpNotFound();
             }
-            
             EingeloggtePerson.VerfuegtUeber.Remove(leistung);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

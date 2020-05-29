@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/27/2020 11:52:47
+-- Date Created: 05/28/2020 10:09:22
 -- Generated from EDMX file: C:\Users\I2CM Developer\Source\Repos\Fitnessstudio\FitnessstudioLib\FitnessstudioModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,26 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_VerfuegtUeber_Person]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[VerfuegtUeber] DROP CONSTRAINT [FK_VerfuegtUeber_Person];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VerfuegtUeber_Leistung]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[VerfuegtUeber] DROP CONSTRAINT [FK_VerfuegtUeber_Leistung];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[PersonSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PersonSet];
+GO
+IF OBJECT_ID(N'[dbo].[LeistungSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[LeistungSet];
+GO
+IF OBJECT_ID(N'[dbo].[VerfuegtUeber]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[VerfuegtUeber];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -34,7 +49,9 @@ CREATE TABLE [dbo].[PersonSet] (
     [Vorname] nvarchar(max)  NOT NULL,
     [Wohnort] nvarchar(max)  NOT NULL,
     [Bank] nvarchar(max)  NOT NULL,
-    [Email] nvarchar(max)  NOT NULL
+    [Email] nvarchar(max)  NOT NULL,
+    [RoleStaff] bit  NOT NULL,
+    [RoleMember] bit  NOT NULL
 );
 GO
 

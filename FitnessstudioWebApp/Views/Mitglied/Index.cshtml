@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<FitnessstudioLib.Person>
 
 @{
-    ViewBag.Title = "Mein Profil";
+    ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Mein Profil</h2>
+
 
 <table class="table">
     <tr>
@@ -27,28 +28,27 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nachname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vorname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Wohnort)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bank)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Bearbeiten", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Leistungen", "Index", "Katalog") |
-            @Html.ActionLink("Infos", "Details", new { id = item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nachname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Vorname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Wohnort)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Bank)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.ActionLink("Bearbeiten", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id })
+    </td>
+</tr>
 }
 
 </table>

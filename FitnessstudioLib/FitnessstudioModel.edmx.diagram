@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="cfdcb03f01fe46b2bee4bc01bfcddf13" Name="Diagram1" ZoomLevel="64" >
         <EntityTypeShape EntityType="FitnessstudioModel.Person" Width="1.5" PointX="5.875" PointY="0.5" />
-        <EntityTypeShape EntityType="FitnessstudioModel.Leistung" Width="1.5" PointX="5.875" PointY="3.375" />
+        <EntityTypeShape EntityType="FitnessstudioModel.Leistung" Width="1.5" PointX="5.875" PointY="4" />
         <AssociationConnector Association="FitnessstudioModel.VerfuegtUeber" />
       </Diagram>
     </edmx:Diagrams>

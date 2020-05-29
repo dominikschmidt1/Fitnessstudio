@@ -10,17 +10,17 @@ using FitnessstudioLib;
 
 namespace FitnessstudioWebApp.Controllers
 {
-    public class LoginController : BaseController
+    public class MitarbeiterController : BaseController
     {
 
-        // GET: Login
+        // GET: Mitarbeiter
         public ActionResult Index()
         {
             return View(db.PersonSet.ToList());
         }
 
-        // GET: Login/Details/5
-        public ActionResult Select(int? id)
+        // GET: Mitarbeiter/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -31,21 +31,7 @@ namespace FitnessstudioWebApp.Controllers
             {
                 return HttpNotFound();
             }
-            setPersonId(id.Value);
-            if (EingeloggtePerson.RoleMember == true)
-            {
-                ViewBag.PersonIst = "Mitglied";
-                return RedirectToAction("Index","Mitglied");
-            }
-            if (EingeloggtePerson.RoleStaff == true)
-            {
-                ViewBag.PersonIst = "Mitarbeiter";
-                return RedirectToAction("Index","Mitarbeiter");
-            }
-            else
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            return View(person);
         }
 
         protected override void Dispose(bool disposing)

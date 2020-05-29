@@ -132,6 +132,7 @@
     <Compile Include="Controllers\KatalogController.cs" />
     <Compile Include="Controllers\LeistungsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MitarbeiterController.cs" />
     <Compile Include="Controllers\MitgliedController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,22 +187,19 @@
     <Content Include="Views\Leistungs\Edit.cshtml" />
     <Content Include="Views\Leistungs\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Base\Create.cshtml" />
-    <Content Include="Views\Base\Delete.cshtml" />
-    <Content Include="Views\Base\Details.cshtml" />
-    <Content Include="Views\Base\Edit.cshtml" />
-    <Content Include="Views\Base\Index.cshtml" />
-    <Content Include="Views\Katalog\Details.cshtml" />
     <Content Include="Views\Katalog\Index.cshtml" />
     <Content Include="Views\Katalog\Add.cshtml" />
     <Content Include="Views\Katalog\Deselect.cshtml" />
     <Content Include="Views\Mitglied\Details.cshtml" />
     <Content Include="Views\Mitglied\Edit.cshtml" />
     <Content Include="Views\Mitglied\Index.cshtml" />
+    <Content Include="Views\Mitarbeiter\Details.cshtml" />
+    <Content Include="Views\Mitarbeiter\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

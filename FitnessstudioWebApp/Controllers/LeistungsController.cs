@@ -10,9 +10,8 @@ using FitnessstudioLib;
 
 namespace FitnessstudioWebApp.Controllers
 {
-    public class LeistungsController : Controller
+    public class LeistungsController : BaseController
     {
-        private FitnessstudioModelContainer db = new FitnessstudioModelContainer();
 
         // GET: Leistungs
         public ActionResult Index()

@@ -26,6 +26,8 @@ namespace FitnessstudioLib
         public string Wohnort { get; set; }
         public string Bank { get; set; }
         public string Email { get; set; }
+        public bool RoleStaff { get; set; }
+        public bool RoleMember { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Leistung> VerfuegtUeber { get; set; }

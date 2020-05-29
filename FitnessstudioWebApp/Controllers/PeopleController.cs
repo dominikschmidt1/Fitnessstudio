@@ -10,9 +10,8 @@ using FitnessstudioLib;
 
 namespace FitnessstudioWebApp.Controllers
 {
-    public class PeopleController : Controller
+    public class PeopleController : BaseController
     {
-        private FitnessstudioModelContainer db = new FitnessstudioModelContainer();
 
         // GET: People
         public ActionResult Index()
@@ -46,8 +45,18 @@ namespace FitnessstudioWebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nachname,Vorname,Wohnort,Bank,Email")] Person person)
+        public ActionResult Create([Bind(Include = "Id,Nachname,Vorname,Wohnort,Bank,Email,RoleStaff,RoleMember")] Person person)
         {
+            if (person.RoleStaff == false && person.RoleMember == false)
+            {
+                ModelState.AddModelError("", "Person muss entweder Mitglied oder Mitarbeiter sein");
+                return View(person);
+            }
+            if (person.RoleStaff == true && person.RoleMember == true)
+            {
+                ModelState.AddModelError("", "Person darf nur Mitglied oder Mitarbeiter sein");
+                return View(person);
+            }
             if (ModelState.IsValid)
             {
                 db.PersonSet.Add(person);
@@ -78,8 +87,18 @@ namespace FitnessstudioWebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nachname,Vorname,Wohnort,Bank,Email")] Person person)
+        public ActionResult Edit([Bind(Include = "Id,Nachname,Vorname,Wohnort,Bank,Email,RoleStaff,RoleMember")] Person person)
         {
+            if (person.RoleStaff == false && person.RoleMember == false)
+            {
+                ModelState.AddModelError("", "Person muss entweder Mitglied oder Mitarbeiter sein");
+                return View(person);
+            }
+            if (person.RoleStaff == true && person.RoleMember == true)
+            {
+                ModelState.AddModelError("", "Person darf nur Mitglied oder Mitarbeiter sein");
+                return View(person);
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(person).State = EntityState.Modified;

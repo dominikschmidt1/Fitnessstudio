@@ -28,6 +28,8 @@
     <Property Name="Wohnort" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Bank" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoleStaff" Type="bit" Nullable="false" />
+    <Property Name="RoleMember" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="LeistungSet">
     <Key>
@@ -92,6 +94,8 @@
           <Property Name="Bank" Type="String" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" />
           <NavigationProperty Name="VerfuegtUeber" Relationship="FitnessstudioModel.VerfuegtUeber" FromRole="Person" ToRole="Leistung" />
+          <Property Name="RoleStaff" Type="Boolean" Nullable="false" />
+          <Property Name="RoleMember" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Leistung">
           <Key>
@@ -121,6 +125,8 @@
           <ScalarProperty Name="Wohnort" ColumnName="Wohnort" />
           <ScalarProperty Name="Bank" ColumnName="Bank" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="RoleStaff" ColumnName="RoleStaff" />
+          <ScalarProperty Name="RoleMember" ColumnName="RoleMember" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

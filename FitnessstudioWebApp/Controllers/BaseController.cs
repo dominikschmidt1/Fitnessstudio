@@ -38,7 +38,6 @@ namespace FitnessstudioWebApp.Controllers
         {
             Session[PersonIdKey] = personId;
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

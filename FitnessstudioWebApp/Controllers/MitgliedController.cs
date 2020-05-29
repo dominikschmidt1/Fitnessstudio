@@ -20,9 +20,7 @@ namespace FitnessstudioWebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var person = db.PersonSet
-                .Include(m => m.VerfuegtUeber);
-            return View(person.ToList());
+            return View(db.PersonSet.ToList());
         }
 
         // GET: Mitglied/Details/5
@@ -60,7 +58,7 @@ namespace FitnessstudioWebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nachname,Vorname,Wohnort,Bank,Email")] Person person)
+        public ActionResult Edit([Bind(Include = "Id,Nachname,Vorname,Wohnort,Bank,Email,RoleStaff,RoleMember")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +68,6 @@ namespace FitnessstudioWebApp.Controllers
             }
             return View(person);
         }
-
 
         protected override void Dispose(bool disposing)
         {

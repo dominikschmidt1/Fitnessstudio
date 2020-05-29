@@ -1,0 +1,19 @@
+﻿@model IEnumerable<FitnessstudioLib.Person>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Optionen</h2>
+
+<p>
+    @Html.ActionLink("Person suchen", "Search")
+</p>
+
+<p>
+    @Html.ActionLink("Mitglied erstellen", "Create", "People")
+</p>
+
+<p>
+    @Html.ActionLink("Leistung erstellen", "Create", "Leistungs")
+</p>
