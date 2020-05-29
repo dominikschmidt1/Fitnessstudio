@@ -61,7 +61,7 @@ namespace FitnessstudioWebApp.Controllers
             {
                 db.PersonSet.Add(person);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Mitarbeiter");
             }
 
             return View(person);
@@ -103,7 +103,7 @@ namespace FitnessstudioWebApp.Controllers
             {
                 db.Entry(person).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Mitarbeiter");
             }
             return View(person);
         }
@@ -131,7 +131,7 @@ namespace FitnessstudioWebApp.Controllers
             Person person = db.PersonSet.Find(id);
             db.PersonSet.Remove(person);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Mitarbeiter");
         }
 
         protected override void Dispose(bool disposing)

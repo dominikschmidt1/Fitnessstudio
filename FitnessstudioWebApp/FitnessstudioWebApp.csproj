@@ -193,7 +193,7 @@
     <Content Include="Views\Mitglied\Details.cshtml" />
     <Content Include="Views\Mitglied\Edit.cshtml" />
     <Content Include="Views\Mitglied\Index.cshtml" />
-    <Content Include="Views\Mitarbeiter\Details.cshtml" />
+    <Content Include="Views\Mitarbeiter\Select.cshtml" />
     <Content Include="Views\Mitarbeiter\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

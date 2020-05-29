@@ -51,7 +51,7 @@ namespace FitnessstudioWebApp.Controllers
             {
                 db.LeistungSet.Add(leistung);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Mitarbeiter");
             }
 
             return View(leistung);

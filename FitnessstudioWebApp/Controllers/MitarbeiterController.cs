@@ -16,22 +16,13 @@ namespace FitnessstudioWebApp.Controllers
         // GET: Mitarbeiter
         public ActionResult Index()
         {
-            return View(db.PersonSet.ToList());
+            return View();
         }
 
-        // GET: Mitarbeiter/Details/5
-        public ActionResult Details(int? id)
+        // GET: Mitarbeiter/Select/5
+        public ActionResult Select()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Person person = db.PersonSet.Find(id);
-            if (person == null)
-            {
-                return HttpNotFound();
-            }
-            return View(person);
+            return View(db.PersonSet.ToList());
         }
 
         protected override void Dispose(bool disposing)
