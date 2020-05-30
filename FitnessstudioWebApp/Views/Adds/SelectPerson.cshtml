@@ -1,0 +1,80 @@
+﻿@model IEnumerable<FitnessstudioLib.Person>
+
+@{
+    ViewBag.Title = "SelectPerson";
+}
+
+<h2>SelectPerson</h2>
+@if (ViewBag.Leistung != null)
+{
+    <h2>Leistung zur Vorstellung</h2>
+    @ViewBag.Leistung.ToString();
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nachname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vorname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wohnort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bank)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleStaff)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleMember)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nachname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vorname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wohnort)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleStaff)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleMember)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", "People", new { id = item.Id }, null) |
+                @if (ViewBag.Leistung == null)
+                {
+                    @Html.ActionLink("Wählen", "SelectLeistung", new { personId = item.Id })
+                }
+                else
+                {
+                    @Html.ActionLink("Hinzufügen", "Create", new { leisungId = ViewBag.Leistung.Id, personId = item.Id })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

@@ -27,5 +27,6 @@ namespace FitnessstudioLib
     
         public virtual DbSet<Person> PersonSet { get; set; }
         public virtual DbSet<Leistung> LeistungSet { get; set; }
+
     }
 }

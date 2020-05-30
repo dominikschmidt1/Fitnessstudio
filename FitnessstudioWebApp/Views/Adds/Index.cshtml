@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FitnessstudioWebApp.Models.Add>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+
+</h2>
+
+<p>
+    @Html.ActionLink("Neu...", "Create")
+</p>
+<p>
+    <div class="input-group">
+        <span class="input-group-addon">
+            <i class=" glyphicon glyphicon-filter">
+            </i>
+        </span>
+        <input type="text"
+               class="form-control"
+               id="filtertext"
+               onkeyup="filter()"
+               placeholder="Filter eingeben ...">
+    </div>
+</p>
+<table class="table" id="filterTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Person.Nachname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Leistung.Bezeichnung)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Person.Nachname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Leistung.Bezeichnung)
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { personId = item.Person.Id, leistungId = item.Leistung.Id }) |
+        @Html.ActionLink("Löschen", "Delete", new { personId = item.Person.Id, leistungId = item.Leistung.Id })
+    </td>
+</tr>
+}
+
+</table>
+@Scripts.Render("~/Scripts/dataFilter.js")

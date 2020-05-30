@@ -34,12 +34,10 @@ namespace FitnessstudioWebApp.Controllers
             setPersonId(id.Value);
             if (EingeloggtePerson.RoleMember == true)
             {
-                ViewBag.PersonIst = "Mitglied";
                 return RedirectToAction("Index","Mitglied");
             }
             if (EingeloggtePerson.RoleStaff == true)
             {
-                ViewBag.PersonIst = "Mitarbeiter";
                 return RedirectToAction("Index","Mitarbeiter");
             }
             else

@@ -20,7 +20,9 @@ namespace FitnessstudioWebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return View(db.PersonSet.ToList());
+            List<Person> mitglied = new List<Person>();
+            mitglied.Add(EingeloggtePerson);
+            return View(mitglied);
         }
 
         // GET: Mitglied/Details/5
@@ -58,11 +60,17 @@ namespace FitnessstudioWebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nachname,Vorname,Wohnort,Bank,Email,RoleStaff,RoleMember")] Person person)
+        public ActionResult Edit([Bind(Include = "Id,Nachname,Vorname,Wohnort,Bank,Email")] Person person)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(person).State = EntityState.Modified;
+                Person personOriginal = db.PersonSet.Find(person.Id);
+                personOriginal.Id = person.Id;
+                personOriginal.Nachname = person.Nachname;
+                personOriginal.Vorname = person.Vorname;
+                personOriginal.Wohnort = person.Wohnort;
+                personOriginal.Bank = person.Bank;
+                personOriginal.Email = person.Bank;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

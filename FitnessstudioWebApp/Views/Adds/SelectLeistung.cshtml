@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FitnessstudioLib.Leistung>
+
+@{
+    ViewBag.Title = "SelectLeistung";
+}
+
+<h2>SelectLeistung</h2>
+@if (ViewBag.Member != null)
+{
+    <h2>Leistung für</h2>
+    @ViewBag.Member.ToString();
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bezeichnung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preis)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bezeichnung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Preis)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", "Leistungs", new { id = item.Id }, null) |
+            @if (ViewBag.Member == null)
+            {
+                @Html.ActionLink("Wählen", "SelectPerson", new { personId = item.Id })
+            }
+            else
+            {
+                @Html.ActionLink("Hinzufügen", "Create", new { personId = ViewBag.Member.Id, leistungId = item.Id })
+            }
+        </td>
+    </tr>
+}
+
+</table>

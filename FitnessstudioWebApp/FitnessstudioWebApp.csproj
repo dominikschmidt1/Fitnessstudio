@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KatalogController.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Add.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -193,12 +195,20 @@
     <Content Include="Views\Mitglied\Details.cshtml" />
     <Content Include="Views\Mitglied\Edit.cshtml" />
     <Content Include="Views\Mitglied\Index.cshtml" />
-    <Content Include="Views\Mitarbeiter\Select.cshtml" />
     <Content Include="Views\Mitarbeiter\Index.cshtml" />
+    <Content Include="Views\Adds\Create.cshtml" />
+    <Content Include="Views\Adds\Delete.cshtml" />
+    <Content Include="Views\Adds\Details.cshtml" />
+    <Content Include="Views\Adds\Edit.cshtml" />
+    <Content Include="Views\Adds\Index.cshtml" />
+    <Content Include="Views\Adds\SelectPerson.cshtml" />
+    <Content Include="Views\Adds\SelectLeistung.cshtml" />
+    <Content Include="Views\Mitarbeiter\Profil.cshtml" />
+    <Content Include="Views\Mitarbeiter\Edit.cshtml" />
+    <Content Include="Views\Mitarbeiter\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

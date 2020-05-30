@@ -17,29 +17,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Bezeichnung)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Preis)
-        </td>
-        <td>
-            @if (ViewBag.HinzugefuegteIds.Contains(item.Id))
-            {
-                @Html.ActionLink("Abwählen", "Deselect", new { id = item.Id })
-            }
-            else
-            {
-                @Html.ActionLink("Hinzufügen", "Add", new { id = item.Id })
-            }
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bezeichnung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preis)
+            </td>
+            <td>
+                @if (ViewBag.HinzugefuegteIds.Contains(item.Id))
+                {
+                    @Html.ActionLink("Abwählen", "Deselect", new { id = item.Id })
+                }
+                else
+                {
+                    @Html.ActionLink("Hinzufügen", "Add", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
 
 </table>
+@if (ViewBag.Person.RoleMember)
+{
+    <div>
+        @Html.ActionLink("Mein Profil", "Index", "Mitglied")
+    </div>
+}
+else
+{
+    <div>
+        @Html.ActionLink("Mein Profil", "Profil", "Mitarbeiter")
+    </div>
+}
 
-<div>
-    @Html.ActionLink("Back to List", "Index", "Mitglied")
-</div>
