@@ -52,6 +52,10 @@ namespace FitnessstudioWebApp.Controllers
         // GET: Adds
         public ActionResult Index()
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             var adds =
                 from person in db.PersonSet
                 from leistung in db.LeistungSet
@@ -72,6 +76,10 @@ namespace FitnessstudioWebApp.Controllers
         // GET: Adds/Create
         public ActionResult Create(int? personId, int? leistungId)
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (personId != null && leistungId != null)
                 return Create(
                     new Add {

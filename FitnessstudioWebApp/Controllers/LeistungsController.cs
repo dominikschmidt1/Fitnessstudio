@@ -16,12 +16,20 @@ namespace FitnessstudioWebApp.Controllers
         // GET: Leistungs
         public ActionResult Index()
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             return View(db.LeistungSet.ToList());
         }
 
         // GET: Leistungs/Details/5
         public ActionResult Details(int? id)
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -37,6 +45,10 @@ namespace FitnessstudioWebApp.Controllers
         // GET: Leistungs/Create
         public ActionResult Create()
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             return View();
         }
 
@@ -60,6 +72,10 @@ namespace FitnessstudioWebApp.Controllers
         // GET: Leistungs/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -91,6 +107,10 @@ namespace FitnessstudioWebApp.Controllers
         // GET: Leistungs/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

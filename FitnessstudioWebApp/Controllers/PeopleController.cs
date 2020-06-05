@@ -16,12 +16,20 @@ namespace FitnessstudioWebApp.Controllers
         // GET: People
         public ActionResult Index()
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             return View(db.PersonSet.ToList());
         }
 
         // GET: People/Details/5
         public ActionResult Details(int? id)
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -37,6 +45,10 @@ namespace FitnessstudioWebApp.Controllers
         // GET: People/Create
         public ActionResult Create()
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             return View();
         }
 
@@ -65,73 +77,6 @@ namespace FitnessstudioWebApp.Controllers
             }
 
             return View(person);
-        }
-
-        // GET: People/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Person person = db.PersonSet.Find(id);
-            if (person == null)
-            {
-                return HttpNotFound();
-            }
-            return View(person);
-        }
-
-        // POST: People/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nachname,Vorname,Wohnort,Bank,Email,RoleStaff,RoleMember")] Person person)
-        {
-            if (person.RoleStaff == false && person.RoleMember == false)
-            {
-                ModelState.AddModelError("", "Person muss entweder Mitglied oder Mitarbeiter sein");
-                return View(person);
-            }
-            if (person.RoleStaff == true && person.RoleMember == true)
-            {
-                ModelState.AddModelError("", "Person darf nur Mitglied oder Mitarbeiter sein");
-                return View(person);
-            }
-            if (ModelState.IsValid)
-            {
-                db.Entry(person).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index","Mitarbeiter");
-            }
-            return View(person);
-        }
-
-        // GET: People/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Person person = db.PersonSet.Find(id);
-            if (person == null)
-            {
-                return HttpNotFound();
-            }
-            return View(person);
-        }
-
-        // POST: People/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Person person = db.PersonSet.Find(id);
-            db.PersonSet.Remove(person);
-            db.SaveChanges();
-            return RedirectToAction("Index","Mitarbeiter");
         }
 
         protected override void Dispose(bool disposing)

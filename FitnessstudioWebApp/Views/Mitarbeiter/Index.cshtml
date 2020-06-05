@@ -6,14 +6,27 @@
 
 <h2>Optionen</h2>
 
-<p>
-    @Html.ActionLink("Mitglied erstellen", "Create", "People")
-</p>
+<div class="row">
+    <div class="col-md-4">
+        <h2>Mitglieder</h2>
+        <p>
+            @Html.ActionLink("Mitglied erstellen", "Create", "People")
+        </p>
+        <p>
+            @Html.ActionLink("Mitglied bearbeiten", "SelectEdit")
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Leistungen</h2>
+        <p>
+            @Html.ActionLink("Leistung erstellen", "Create", "Leistungs")
+        </p>
+        <p>
+            @Html.ActionLink("Leistung hinzufügen", "Index", "Adds")
+        </p>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Leistung erstellen", "Create", "Leistungs")
-</p>
 
-<p>
-    @Html.ActionLink("Leistung hinzufügen", "Index", "Adds")
-</p>
+
+

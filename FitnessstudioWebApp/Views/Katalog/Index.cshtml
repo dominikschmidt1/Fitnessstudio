@@ -4,9 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Leistung</h2>
+<h2>Leistungsliste</h2>
 
 <table class="table">
+    <h4>Hinzufügen oder Abwählen von Leistungen</h4>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Bezeichnung)
@@ -40,6 +41,7 @@
     }
 
 </table>
+@*
 @if (ViewBag.Person.RoleMember)
 {
     <div>
@@ -52,4 +54,5 @@ else
         @Html.ActionLink("Mein Profil", "Profil", "Mitarbeiter")
     </div>
 }
+    *@
 

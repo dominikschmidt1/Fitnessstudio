@@ -22,12 +22,17 @@ namespace FitnessstudioWebApp.Controllers
             }
             List<Person> mitglied = new List<Person>();
             mitglied.Add(EingeloggtePerson);
-            return View(mitglied);
+            var person = db.PersonSet.Where(m => m.Id == EingeloggtePerson.Id).Include(m => m.VerfuegtUeber);
+            return View(person.ToList());
         }
 
         // GET: Mitglied/Details/5
         public ActionResult Details(int? id)
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -43,6 +48,10 @@ namespace FitnessstudioWebApp.Controllers
         // GET: Mitglied/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -62,6 +71,10 @@ namespace FitnessstudioWebApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Nachname,Vorname,Wohnort,Bank,Email")] Person person)
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (ModelState.IsValid)
             {
                 Person personOriginal = db.PersonSet.Find(person.Id);
@@ -70,7 +83,7 @@ namespace FitnessstudioWebApp.Controllers
                 personOriginal.Vorname = person.Vorname;
                 personOriginal.Wohnort = person.Wohnort;
                 personOriginal.Bank = person.Bank;
-                personOriginal.Email = person.Bank;
+                personOriginal.Email = person.Email;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

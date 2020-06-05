@@ -20,35 +20,37 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*if (ViewBag.Person.RoleStaff)
-        {
-            <li>@Html.ActionLink("Startseite", "Index", "Mitarbeiter")</li>
-            <li>@Html.ActionLink("Personen", "Index", "People")</li>
-            <li>@Html.ActionLink("Leistungen", "Index", "Leistungs")</li>
-            <li>@Html.ActionLink("Mein Profil", "Profil", "Mitarbeiter")</li>
-                        <li>@Html.ActionLink("Meine Leistungen", "Index", "Katalog")</li>
-            <li>@Html.ActionLink("Abmelden", "Index", "Login")</li>
-        }
-        else if (ViewBag.RoleMember)
-        {
-            <li>@Html.ActionLink("Meine Leistungen", "Index", "Katalog")</li>
-            <li>@Html.ActionLink("Mein Profil", "Index", "Mitglied")</li>
-            <li>@Html.ActionLink("Abmelden", "Index", "Login")</li>
-        }
-        else
-        {
-            <li>@Html.ActionLink("Login", "Index", "Login")</li>
-
-        }*@
-                    <li>@Html.ActionLink("Login", "Index", "Login")</li>
-                    <li>@Html.ActionLink("Startseite", "Index", "Mitarbeiter")</li>
-                    <li>@Html.ActionLink("Personen", "Index", "People")</li>
-                    <li>@Html.ActionLink("Leistungen", "Index", "Leistungs")</li>
+                    @if (ViewBag.Person != null)
+                    {
+                        if (ViewBag.Person.RoleStaff)
+                        {
+                            <li>@Html.ActionLink("Startseite", "Index", "Mitarbeiter")</li>
+                            <li>@Html.ActionLink("Personen", "Index", "People")</li>
+                            <li>@Html.ActionLink("Leistungen", "Index", "Leistungs")</li>
+                        }
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Index", "Login")</li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Meine Leistungen", "Index", "Katalog")</li>
-                    <li>@Html.ActionLink("Mein Profil", "Profil", "Mitarbeiter")</li>
-                    <li>@Html.ActionLink("Abmelden", "Index", "Login")</li>
+                    @if (ViewBag.Person != null)
+                    {
+                        if (ViewBag.Person.RoleMember)
+                        {
+                            <li>@Html.ActionLink("Mein Profil", "Index", "Mitglied")</li>
+                            <li>@Html.ActionLink("Meine Leistungen", "Index", "Katalog")</li>
+                            <li>@Html.ActionLink("Abmelden", "Index", "Login")</li>
+
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Mein Profil", "Profil", "Mitarbeiter")</li>
+                            <li>@Html.ActionLink("Meine Leistungen", "Index", "Katalog")</li>
+                            <li>@Html.ActionLink("Abmelden", "Index", "Login")</li>
+                        }
+                    }
                 </ul>
             </div>
         </div>

@@ -179,9 +179,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\People\Create.cshtml" />
-    <Content Include="Views\People\Delete.cshtml" />
     <Content Include="Views\People\Details.cshtml" />
-    <Content Include="Views\People\Edit.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
     <Content Include="Views\Leistungs\Create.cshtml" />
     <Content Include="Views\Leistungs\Delete.cshtml" />
@@ -199,13 +197,14 @@
     <Content Include="Views\Adds\Create.cshtml" />
     <Content Include="Views\Adds\Delete.cshtml" />
     <Content Include="Views\Adds\Details.cshtml" />
-    <Content Include="Views\Adds\Edit.cshtml" />
     <Content Include="Views\Adds\Index.cshtml" />
     <Content Include="Views\Adds\SelectPerson.cshtml" />
     <Content Include="Views\Adds\SelectLeistung.cshtml" />
     <Content Include="Views\Mitarbeiter\Profil.cshtml" />
     <Content Include="Views\Mitarbeiter\Edit.cshtml" />
     <Content Include="Views\Mitarbeiter\Details.cshtml" />
+    <Content Include="Views\Mitarbeiter\SelectEdit.cshtml" />
+    <Content Include="Views\Mitarbeiter\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

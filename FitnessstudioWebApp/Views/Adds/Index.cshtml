@@ -9,7 +9,7 @@
 </h2>
 
 <p>
-    @Html.ActionLink("Neu...", "Create")
+    @Html.ActionLink("Leistung zuweisen", "Create")
 </p>
 <p>
     <div class="input-group">
@@ -45,7 +45,7 @@
     </td>
     <td>
         @Html.ActionLink("Details", "Details", new { personId = item.Person.Id, leistungId = item.Leistung.Id }) |
-        @Html.ActionLink("Löschen", "Delete", new { personId = item.Person.Id, leistungId = item.Leistung.Id })
+        @Html.ActionLink("Entfernen", "Delete", new { personId = item.Person.Id, leistungId = item.Leistung.Id })
     </td>
 </tr>
 }

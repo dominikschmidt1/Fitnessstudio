@@ -16,6 +16,10 @@ namespace FitnessstudioWebApp.Controllers
         // GET: Mitarbeiter
         public ActionResult Index()
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             return View();
         }
 
@@ -31,9 +35,14 @@ namespace FitnessstudioWebApp.Controllers
             return View(mitarbeiter);
         }
 
+
         // GET: Mitarbeiter/Details/5
         public ActionResult Details(int? id)
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -49,6 +58,10 @@ namespace FitnessstudioWebApp.Controllers
         // GET: Mitarbeiter/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -82,9 +95,49 @@ namespace FitnessstudioWebApp.Controllers
             {
                 db.Entry(person).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Profil", "Mitarbeiter");
+                return RedirectToAction("Index", "Mitarbeiter");
             }
             return View(person);
+        }
+
+        // GET: Mitarbeiter/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Person person = db.PersonSet.Find(id);
+            if (person == null)
+            {
+                return HttpNotFound();
+            }
+            return View(person);
+        }
+
+        // POST: People/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Person person = db.PersonSet.Find(id);
+            db.PersonSet.Remove(person);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult SelectEdit()
+        {
+            if (!hasPerson())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return View(db.PersonSet.Where(m => m.Id != EingeloggtePerson.Id).ToList());
+            // return View(db.PersonSet.Where(u => u.RoleMember).ToList());
         }
 
         protected override void Dispose(bool disposing)
