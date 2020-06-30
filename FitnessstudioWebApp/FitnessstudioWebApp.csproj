@@ -188,8 +188,6 @@
     <Content Include="Views\Leistungs\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Katalog\Index.cshtml" />
-    <Content Include="Views\Katalog\Add.cshtml" />
-    <Content Include="Views\Katalog\Deselect.cshtml" />
     <Content Include="Views\Mitglied\Details.cshtml" />
     <Content Include="Views\Mitglied\Edit.cshtml" />
     <Content Include="Views\Mitglied\Index.cshtml" />
